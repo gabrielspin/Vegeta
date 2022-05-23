@@ -63,7 +63,7 @@ namespace Meus_testes
                         else if (radioButtonOrderByTimeTaken.Checked == true)
                         {
                             
-                            dictLog.Add(count, new Tuple<string, string, string, string, string, string, string, float>(lineSplited[0], lineSplited[1], lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], timeTakenLineSplited));
+                            //dictLog.Add(count, new Tuple<string, string, string, string, string, string, string, float>(lineSplited[0], lineSplited[1], lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], timeTakenLineSplited));
                         }
                     }
                 }
