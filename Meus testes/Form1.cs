@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,8 @@ namespace Meus_testes
         string filePath;
         int count;
         DateTime logData;
+        Dictionary<int, Tuple<string, string, string, string, string, string, string, float>> dictLog = new Dictionary<int, Tuple<string, string, string, string, string, string, string, float>>();
+
 
         public Form1()
         {
@@ -29,7 +32,7 @@ namespace Meus_testes
 
         private void ReadLog()
         {
-            
+
             count = 0;
             richTextBox1.Text = "";
 
@@ -45,25 +48,40 @@ namespace Meus_testes
 
                     if ((float)timeBox.Value <= timeTakenLineSplited)
                     {
-                        
-                        
                         count++;
 
-                        richTextBox1.Text += "#" + count + "\n";
-                        richTextBox1.Text += lineSplited[0] + " - " + lineSplited[1] + " (GWT)\n";
-                        richTextBox1.Text += "server ip: " + lineSplited[2] + "\n";
-                        richTextBox1.Text += "client ip: " + lineSplited[8] + "\n";
-                        richTextBox1.Text += "port: " + lineSplited[6] + "\n";
-                        richTextBox1.Text += lineSplited[3] + ": " + lineSplited[4] + "\n";
-                        richTextBox1.Text += "time taken: " + timeTakenLineSplited + " seconds \n\n";
+                        if (radioButtonOrderByDate.Checked == true)
+                        {
+                            richTextBox1.Text += "#" + count + "\n";
+                            richTextBox1.Text += lineSplited[0] + " - " + lineSplited[1] + " (GWT)\n";
+                            richTextBox1.Text += "server ip: " + lineSplited[2] + "\n";
+                            richTextBox1.Text += "client ip: " + lineSplited[8] + "\n";
+                            richTextBox1.Text += "port: " + lineSplited[6] + "\n";
+                            richTextBox1.Text += lineSplited[3] + ": " + lineSplited[4] + "\n";
+                            richTextBox1.Text += "time taken: " + timeTakenLineSplited + " seconds \n\n";
+                        }
+                        else if (radioButtonOrderByTimeTaken.Checked == true)
+                        {
+                            
+                            dictLog.Add(count, new Tuple<string, string, string, string, string, string, string, float>(lineSplited[0], lineSplited[1], lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], timeTakenLineSplited));
+                        }
                     }
                 }
             }
 
-            labelCount.Visible = true;
-            labelCount.Text = "Total: " + count.ToString() + " logs";
+            if (count > 0)
+            {
+                if (radioButtonOrderByTimeTaken.Checked == true)
+                {
+                    var sortedDict = from entry in dictLog orderby entry.Value ascending select entry;
+                    foreach (var value in sortedDict) richTextBox1.Text += value + "\n";
+                
+                }
 
-            if (count == 0) MessageBox.Show("No log found!");
+                labelCount.Visible = true;
+                labelCount.Text = "Total: " + count.ToString() + " logs";
+            }
+            else MessageBox.Show("No log found!");
             
         }
         private void Form1_Load(object sender, EventArgs e)
