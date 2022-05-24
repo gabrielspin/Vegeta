@@ -20,7 +20,10 @@ namespace Meus_testes
         string filePath;
         int count;
         DateTime logData;
-        Dictionary<int, Tuple<string, string, string, string, string, string, string, float>> dictLog = new Dictionary<int, Tuple<string, string, string, string, string, string, string, float>>();
+        List<string> a = new List<string>();
+        //string[] a;
+        IDictionary<int, List<string>> dictLog = new Dictionary<int, List<string>>();
+        //IDictionary<int, Tuple<string, string, string, string, string, string, string, float>> dictLog = new Dictionary<int, Tuple<string, string, string, string, string, string, string, float>>();
 
 
         public Form1()
@@ -32,7 +35,7 @@ namespace Meus_testes
 
         private void ReadLog()
         {
-
+            
             count = 0;
             richTextBox1.Text = "";
 
@@ -62,7 +65,12 @@ namespace Meus_testes
                         }
                         else if (radioButtonOrderByTimeTaken.Checked == true)
                         {
+                            a.Add(lineSplited[0]);
+                            a.Add(lineSplited[1]);
+                            richTextBox1.Text = a[0];
                             
+                            dictLog.Add(count, a);
+
                             //dictLog.Add(count, new Tuple<string, string, string, string, string, string, string, float>(lineSplited[0], lineSplited[1], lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], timeTakenLineSplited));
                         }
                     }
@@ -73,8 +81,8 @@ namespace Meus_testes
             {
                 if (radioButtonOrderByTimeTaken.Checked == true)
                 {
-                    var sortedDict = from entry in dictLog orderby entry.Value ascending select entry;
-                    foreach (var value in sortedDict) richTextBox1.Text += value + "\n";
+                    // var sortedDict = from entry in dictLog orderby entry.Value ascending select entry;
+                    //foreach (var value in sortedDict) richTextBox1.Text += value + "\n";
                 
                 }
 
