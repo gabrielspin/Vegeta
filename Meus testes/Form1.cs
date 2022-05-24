@@ -25,7 +25,6 @@ namespace Meus_testes
         IDictionary<int, List<string>> dictLog = new Dictionary<int, List<string>>();
         //IDictionary<int, Tuple<string, string, string, string, string, string, string, float>> dictLog = new Dictionary<int, Tuple<string, string, string, string, string, string, string, float>>();
 
-
         public Form1()
         {
 
@@ -65,10 +64,16 @@ namespace Meus_testes
                         }
                         else if (radioButtonOrderByTimeTaken.Checked == true)
                         {
+                            a.Clear();
                             a.Add(lineSplited[0]);
                             a.Add(lineSplited[1]);
-                            richTextBox1.Text = a[0];
-                            
+                            a.Add(lineSplited[2]);
+                            a.Add(lineSplited[8]);
+                            a.Add(lineSplited[6]);
+                            a.Add(lineSplited[3]);
+                            a.Add(lineSplited[4]);
+                            a.Add(lineSplited[14]);
+
                             dictLog.Add(count, a);
 
                             //dictLog.Add(count, new Tuple<string, string, string, string, string, string, string, float>(lineSplited[0], lineSplited[1], lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], timeTakenLineSplited));
@@ -81,8 +86,8 @@ namespace Meus_testes
             {
                 if (radioButtonOrderByTimeTaken.Checked == true)
                 {
-                    // var sortedDict = from entry in dictLog orderby entry.Value ascending select entry;
-                    //foreach (var value in sortedDict) richTextBox1.Text += value + "\n";
+                    var sortedDict = from entry in dictLog orderby entry.Value ascending select entry;
+                    foreach (var value in sortedDict) richTextBox1.Text += value + "\n";
                 
                 }
 
