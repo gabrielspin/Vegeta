@@ -49,7 +49,7 @@ namespace Meus_testes
                         }
                         else code = "-";
 
-                        dataGridView1.Rows.Add(id.ToString(),datetime,lineSplited[2],lineSplited[8],lineSplited[6], lineSplited[3], lineSplited[4], code, timeTakenLineSplited.ToString());
+                        dataGridView1.Rows.Add(id, datetime, lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], code, timeTakenLineSplited);
 
                             /*
                             richTextBox1.Text += "#" + count + "\n";
