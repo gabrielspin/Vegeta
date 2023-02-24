@@ -37,6 +37,9 @@
             this.labelTime = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataSet1 = new System.Data.DataSet();
+            this.button_Refresh = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.Col_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Datetime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_ServerIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,9 +49,7 @@
             this.Col_Request = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_TimeSpend = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataSet1 = new System.Data.DataSet();
-            this.button_Refresh = new System.Windows.Forms.Button();
-            this.buttonReset = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.timeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -152,12 +153,37 @@
             this.dataGridView1.Size = new System.Drawing.Size(1068, 318);
             this.dataGridView1.TabIndex = 16;
             // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "NewDataSet";
+            // 
+            // button_Refresh
+            // 
+            this.button_Refresh.Enabled = false;
+            this.button_Refresh.Location = new System.Drawing.Point(330, 9);
+            this.button_Refresh.Name = "button_Refresh";
+            this.button_Refresh.Size = new System.Drawing.Size(59, 23);
+            this.button_Refresh.TabIndex = 17;
+            this.button_Refresh.Text = "Atualizar";
+            this.button_Refresh.UseVisualStyleBackColor = true;
+            this.button_Refresh.Click += new System.EventHandler(this.button_Refresh_Click);
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(1025, 396);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(59, 23);
+            this.buttonReset.TabIndex = 18;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
             // Col_ID
             // 
             this.Col_ID.HeaderText = "ID";
             this.Col_ID.Name = "Col_ID";
             this.Col_ID.ReadOnly = true;
-            this.Col_ID.Width = 40;
+            this.Col_ID.Width = 50;
             // 
             // Col_Datetime
             // 
@@ -214,30 +240,13 @@
             this.Col_TimeSpend.ReadOnly = true;
             this.Col_TimeSpend.Width = 90;
             // 
-            // dataSet1
+            // comboBox1
             // 
-            this.dataSet1.DataSetName = "NewDataSet";
-            // 
-            // button_Refresh
-            // 
-            this.button_Refresh.Enabled = false;
-            this.button_Refresh.Location = new System.Drawing.Point(330, 9);
-            this.button_Refresh.Name = "button_Refresh";
-            this.button_Refresh.Size = new System.Drawing.Size(59, 23);
-            this.button_Refresh.TabIndex = 17;
-            this.button_Refresh.Text = "Atualizar";
-            this.button_Refresh.UseVisualStyleBackColor = true;
-            this.button_Refresh.Click += new System.EventHandler(this.button_Refresh_Click);
-            // 
-            // buttonReset
-            // 
-            this.buttonReset.Location = new System.Drawing.Point(1025, 396);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(59, 23);
-            this.buttonReset.TabIndex = 18;
-            this.buttonReset.Text = "Reset";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(498, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 19;
             // 
             // Form1
             // 
@@ -245,6 +254,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1096, 431);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.button_Refresh);
             this.Controls.Add(this.dataGridView1);
@@ -278,6 +288,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Data.DataSet dataSet1;
+        private System.Windows.Forms.Button button_Refresh;
+        private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Datetime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_ServerIP;
@@ -287,8 +299,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Request;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_TimeSpend;
-        private System.Windows.Forms.Button button_Refresh;
-        private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
+using System.Collections.Generic;
 
 
 namespace Meus_testes
@@ -13,6 +15,7 @@ namespace Meus_testes
         string code;
         int id;
         DateTime logData;
+        List<string> aplications = new List<string>();
 
         public Form1()
         {
@@ -23,12 +26,15 @@ namespace Meus_testes
 
         private void ReadLog()
         {
+
+            
+
             dataGridView1.Rows.Clear();
-            id = 0;          
-      
+            id = 0;
+
             foreach (string line in File.ReadLines(filePath))
             {
-                string[] lineSplited = line.Split(' ');
+                string[] lineSplited = line.Split(' ');            
 
                 if (DateTime.TryParse(lineSplited[0], out logData))
                 {
@@ -38,32 +44,37 @@ namespace Meus_testes
 
                     if ((float)timeBox.Value <= timeTakenLineSplited)
                     {
+                        aplications.Add(lineSplited[4].Split('/')[1]);
+
                         id++;
-                                       
+
                         string datetime = lineSplited[0] + " - " + lineSplited[1];
 
                         if (lineSplited[5].Contains("Cod="))
                         {
-                            code = lineSplited[5];                          
+                            code = lineSplited[5];
                         }
                         else code = "-";
 
                         dataGridView1.Rows.Add(id, datetime, lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], code, timeTakenLineSplited);
 
-                            /*
-                            richTextBox1.Text += "#" + count + "\n";
-                            richTextBox1.Text += lineSplited[0] + " - " + lineSplited[1] + " (GWT)\n";
-                            richTextBox1.Text += "server ip: " + lineSplited[2] + "\n";
-                            richTextBox1.Text += "client ip: " + lineSplited[8] + "\n";
-                            richTextBox1.Text += "port: " + lineSplited[6] + "\n";
-                            richTextBox1.Text += lineSplited[3] + ": " + lineSplited[4] + "\n";
-                            richTextBox1.Text += "time taken: " + timeTakenLineSplited + " seconds \n\n";
-                            */
-                        
-                       
+                        /*
+                        richTextBox1.Text += "#" + count + "\n";
+                        richTextBox1.Text += lineSplited[0] + " - " + lineSplited[1] + " (GWT)\n";
+                        richTextBox1.Text += "server ip: " + lineSplited[2] + "\n";
+                        richTextBox1.Text += "client ip: " + lineSplited[8] + "\n";
+                        richTextBox1.Text += "port: " + lineSplited[6] + "\n";
+                        richTextBox1.Text += lineSplited[3] + ": " + lineSplited[4] + "\n";
+                        richTextBox1.Text += "time taken: " + timeTakenLineSplited + " seconds \n\n";
+                        */
+
+
                     }
                 }
             }
+
+
+
 
             if (id > 0)
             {
