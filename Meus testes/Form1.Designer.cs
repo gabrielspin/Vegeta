@@ -86,7 +86,7 @@
             // labelCount
             // 
             this.labelCount.AutoSize = true;
-            this.labelCount.Location = new System.Drawing.Point(12, 400);
+            this.labelCount.Location = new System.Drawing.Point(12, 401);
             this.labelCount.Name = "labelCount";
             this.labelCount.Size = new System.Drawing.Size(57, 13);
             this.labelCount.TabIndex = 9;
@@ -107,7 +107,7 @@
             0,
             0});
             this.timeBox.Name = "timeBox";
-            this.timeBox.Size = new System.Drawing.Size(53, 20);
+            this.timeBox.Size = new System.Drawing.Size(43, 20);
             this.timeBox.TabIndex = 0;
             this.timeBox.ValueChanged += new System.EventHandler(this.timeBox_ValueChanged);
             // 
@@ -125,9 +125,9 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(953, 391);
+            this.pictureBox1.Location = new System.Drawing.Point(954, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 31);
+            this.pictureBox1.Size = new System.Drawing.Size(130, 36);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
@@ -231,7 +231,7 @@
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(1024, 14);
+            this.buttonReset.Location = new System.Drawing.Point(1025, 396);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(59, 23);
             this.buttonReset.TabIndex = 18;
@@ -244,7 +244,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1106, 434);
+            this.ClientSize = new System.Drawing.Size(1096, 431);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.button_Refresh);
             this.Controls.Add(this.dataGridView1);
