@@ -22,10 +22,10 @@ namespace Meus_testes
 
         private void ReadLog()
         {
-            
+
+            dataGridView1.Rows.Clear();
             id = 0;
       
-
             foreach (string line in File.ReadLines(filePath))
             {
                 string[] lineSplited = line.Split(' ');
@@ -63,15 +63,10 @@ namespace Meus_testes
                 labelCount.Visible = true;
                 labelCount.Text = "Total: " + id.ToString() + " logs";
             }
-            else MessageBox.Show("No log found!");
+            else MessageBox.Show("Nenhum log encontrado!");
             
         }
         private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -92,7 +87,7 @@ namespace Meus_testes
                     filePath = openFileDialog.FileName;                  
 
                     if (timeBox.Value > 0) ReadLog();
-                    else if (MessageBox.Show("A time set 0 will show all logs. Continue?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK) ReadLog();
+                    else if (MessageBox.Show("Tempo '0' irá filtrar todos os logs. Continuar?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK) ReadLog();
                 }
             }
         }
@@ -119,17 +114,6 @@ namespace Meus_testes
         private void labelTime_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void radioButtonOrderByDate_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonGo_Click(object sender, EventArgs e)
-        {            
-                if (timeBox.Value > 0) ReadLog();
-                else if (MessageBox.Show("A time set 0 will show all logs. Continue?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK) ReadLog();           
         }
     }
 }
