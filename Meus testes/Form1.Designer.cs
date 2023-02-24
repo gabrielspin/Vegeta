@@ -45,6 +45,7 @@
             this.Col_Port = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Verb = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Request = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_TimeSpend = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.timeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -133,10 +134,11 @@
             this.Col_Port,
             this.Col_Verb,
             this.Col_Request,
+            this.Col_Value,
             this.Col_TimeSpend});
             this.dataGridView1.Location = new System.Drawing.Point(15, 69);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(975, 318);
+            this.dataGridView1.Size = new System.Drawing.Size(1076, 318);
             this.dataGridView1.TabIndex = 16;
             // 
             // dataSet1
@@ -192,6 +194,12 @@
             this.Col_Request.ReadOnly = true;
             this.Col_Request.Width = 380;
             // 
+            // Col_Value
+            // 
+            this.Col_Value.HeaderText = "Valor";
+            this.Col_Value.Name = "Col_Value";
+            this.Col_Value.ReadOnly = true;
+            // 
             // Col_TimeSpend
             // 
             this.Col_TimeSpend.HeaderText = "Duração do processo (segundos)";
@@ -204,7 +212,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1004, 434);
+            this.ClientSize = new System.Drawing.Size(1106, 434);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelTime);
@@ -243,6 +251,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Port;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Verb;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Request;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_TimeSpend;
     }
 }

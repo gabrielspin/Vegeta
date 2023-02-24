@@ -10,6 +10,7 @@ namespace Meus_testes
     public partial class Form1 : Form
     {
         string filePath;
+        string code;
         int id;
         DateTime logData;
 
@@ -24,7 +25,7 @@ namespace Meus_testes
         {
 
             dataGridView1.Rows.Clear();
-            id = 0;
+            id = 0;          
       
             foreach (string line in File.ReadLines(filePath))
             {
@@ -40,8 +41,15 @@ namespace Meus_testes
                     {
                         id++;
                                        
-                            string datetime = lineSplited[0] + " - " + lineSplited[1];
-                            dataGridView1.Rows.Add(id.ToString(),datetime,lineSplited[2],lineSplited[8],lineSplited[6], lineSplited[3], lineSplited[4], timeTakenLineSplited.ToString());
+                        string datetime = lineSplited[0] + " - " + lineSplited[1];
+
+                        if (lineSplited[5].Contains("Cod="))
+                        {
+                            code = lineSplited[5];                          
+                        }
+                        else code = "-";
+
+                        dataGridView1.Rows.Add(id.ToString(),datetime,lineSplited[2],lineSplited[8],lineSplited[6], lineSplited[3], lineSplited[4], code, timeTakenLineSplited.ToString());
 
                             /*
                             richTextBox1.Text += "#" + count + "\n";
