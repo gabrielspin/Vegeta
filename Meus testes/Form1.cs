@@ -89,8 +89,10 @@ namespace Meus_testes
                 {
                     labelFilePath.Visible = true;
                     labelFilePath.Text = openFileDialog.FileName;
-                    filePath = openFileDialog.FileName;
-                    buttonGo.Enabled = true;
+                    filePath = openFileDialog.FileName;                  
+
+                    if (timeBox.Value > 0) ReadLog();
+                    else if (MessageBox.Show("A time set 0 will show all logs. Continue?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK) ReadLog();
                 }
             }
         }
