@@ -43,6 +43,10 @@
             this.Col_Datetime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_ServerIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_ClientIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Port = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Verb = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Request = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_TimeSpend = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.timeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -137,7 +141,11 @@
             this.Col_ID,
             this.Col_Datetime,
             this.Col_ServerIP,
-            this.Col_ClientIP});
+            this.Col_ClientIP,
+            this.Col_Port,
+            this.Col_Verb,
+            this.Col_Request,
+            this.Col_TimeSpend});
             this.dataGridView1.Location = new System.Drawing.Point(12, 69);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(858, 318);
@@ -156,7 +164,7 @@
             // 
             // Col_Datetime
             // 
-            this.Col_Datetime.HeaderText = "Date-time";
+            this.Col_Datetime.HeaderText = "Date-time GWT";
             this.Col_Datetime.Name = "Col_Datetime";
             this.Col_Datetime.ReadOnly = true;
             this.Col_Datetime.Width = 160;
@@ -172,6 +180,30 @@
             this.Col_ClientIP.HeaderText = "Client IP";
             this.Col_ClientIP.Name = "Col_ClientIP";
             this.Col_ClientIP.ReadOnly = true;
+            // 
+            // Col_Port
+            // 
+            this.Col_Port.HeaderText = "Port";
+            this.Col_Port.Name = "Col_Port";
+            this.Col_Port.ReadOnly = true;
+            // 
+            // Col_Verb
+            // 
+            this.Col_Verb.HeaderText = "Verb";
+            this.Col_Verb.Name = "Col_Verb";
+            this.Col_Verb.ReadOnly = true;
+            // 
+            // Col_Request
+            // 
+            this.Col_Request.HeaderText = "Request";
+            this.Col_Request.Name = "Col_Request";
+            this.Col_Request.ReadOnly = true;
+            // 
+            // Col_TimeSpend
+            // 
+            this.Col_TimeSpend.HeaderText = "Time Spend (seconds)";
+            this.Col_TimeSpend.Name = "Col_TimeSpend";
+            this.Col_TimeSpend.ReadOnly = true;
             // 
             // Form1
             // 
@@ -216,6 +248,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Datetime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_ServerIP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_ClientIP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Port;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Verb;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Request;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_TimeSpend;
     }
 }
 

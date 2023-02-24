@@ -10,7 +10,7 @@ namespace Meus_testes
     public partial class Form1 : Form
     {
         string filePath;
-        int count;
+        int id;
         DateTime logData;
 
         public Form1()
@@ -23,7 +23,7 @@ namespace Meus_testes
         private void ReadLog()
         {
             
-            count = 0;
+            id = 0;
       
 
             foreach (string line in File.ReadLines(filePath))
@@ -38,12 +38,10 @@ namespace Meus_testes
 
                     if ((float)timeBox.Value <= timeTakenLineSplited)
                     {
-                        count++;
-
-                    
-                        
+                        id++;
+                                       
                             string datetime = lineSplited[0] + " - " + lineSplited[1];
-                            dataGridView1.Rows.Add(count.ToString(), datetime);
+                            dataGridView1.Rows.Add(id.ToString(),datetime,lineSplited[2],lineSplited[8],lineSplited[6], lineSplited[3], lineSplited[4], timeTakenLineSplited.ToString());
 
                             /*
                             richTextBox1.Text += "#" + count + "\n";
@@ -60,10 +58,10 @@ namespace Meus_testes
                 }
             }
 
-            if (count > 0)
+            if (id > 0)
             {
                 labelCount.Visible = true;
-                labelCount.Text = "Total: " + count.ToString() + " logs";
+                labelCount.Text = "Total: " + id.ToString() + " logs";
             }
             else MessageBox.Show("No log found!");
             

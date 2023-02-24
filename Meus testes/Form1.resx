@@ -124,7 +124,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIEAAAAgCAYAAAA14BsbAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAACxdJREFUeF7tWglwlOUZBkUFoVWwap1O27EF6wEViGUEEVpqa1EErW1pq6NW6XR6
+        vAAADrwBlbxySQAACxdJREFUeF7tWglwlOUZBkUFoVWwap1O27EF6wEViGUEEVpqa1EErW1pq6NW6XR6
         WUUQZKgoWAS15ZCW2yCBJKCESohc4QwQEg4DBOQm4QgJIRfJZnPu0+f5D9zd/P/u5mCmtPvMfLO7///9
         3/G+z3t9/7ZCFP/3iJIgiigJorhMJCipBqYeAd49BORWWBej+K/FZSHB0TKg9VIOvghYk2ddjKJFcbbC
         Z31rPi4LCY5dBNov4+CJQOo562IULYY8EqBPosf4bAlESXAFYkJ6NdpPLceb26qsK81DlARXGM6U+9Az
@@ -267,6 +267,18 @@
     <value>True</value>
   </metadata>
   <metadata name="Col_ClientIP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Col_Port.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Col_Verb.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Col_Request.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Col_TimeSpend.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="dataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
