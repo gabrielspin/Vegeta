@@ -23,7 +23,6 @@ namespace Meus_testes
 
         private void ReadLog()
         {
-
             dataGridView1.Rows.Clear();
             id = 0;          
       
@@ -91,11 +90,20 @@ namespace Meus_testes
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     labelFilePath.Visible = true;
-                    labelFilePath.Text = openFileDialog.FileName;
-                    filePath = openFileDialog.FileName;                  
+                    labelFilePath.Text = "carregando...";
+                    filePath = openFileDialog.FileName;
 
-                    if (timeBox.Value > 0) ReadLog();
-                    else if (MessageBox.Show("Tempo '0' irá filtrar todos os logs. Continuar?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK) ReadLog();
+                    if (timeBox.Value > 0)
+                    {
+                        ReadLog();
+                    }
+                    else if (MessageBox.Show("Tempo '0' irá filtrar todos os logs. Continuar?", "Confirmation", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        ReadLog();
+                    }
+
+                    labelFilePath.Text = openFileDialog.FileName;
+                    button_Refresh.Enabled = true;
                 }
             }
         }
@@ -122,6 +130,22 @@ namespace Meus_testes
         private void labelTime_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button_Refresh_Click(object sender, EventArgs e)
+        {
+            ReadLog();
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            button_Refresh.Enabled = false;
+            dataGridView1.Rows.Clear();
+            labelCount.Visible = false;
+            labelCount.Text = "";
+            labelFilePath.Text = "";         
+            timeBox.Value = 0;
+            id = 0;
         }
     }
 }

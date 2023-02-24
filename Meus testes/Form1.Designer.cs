@@ -47,6 +47,8 @@
             this.Col_Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_TimeSpend = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataSet1 = new System.Data.DataSet();
+            this.button_Refresh = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.timeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -94,9 +96,18 @@
             // 
             // timeBox
             // 
-            this.timeBox.Location = new System.Drawing.Point(261, 12);
+            this.timeBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.timeBox.DecimalPlaces = 2;
+            this.timeBox.Location = new System.Drawing.Point(271, 12);
+            this.timeBox.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
             this.timeBox.Name = "timeBox";
-            this.timeBox.Size = new System.Drawing.Size(43, 20);
+            this.timeBox.Size = new System.Drawing.Size(53, 20);
             this.timeBox.TabIndex = 0;
             this.timeBox.ValueChanged += new System.EventHandler(this.timeBox_ValueChanged);
             // 
@@ -105,9 +116,9 @@
             this.labelTime.AutoSize = true;
             this.labelTime.Location = new System.Drawing.Point(12, 14);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(243, 13);
+            this.labelTime.Size = new System.Drawing.Size(253, 13);
             this.labelTime.TabIndex = 10;
-            this.labelTime.Text = "Tempo mínimo da duração do processo (minutos):";
+            this.labelTime.Text = "Tempo mínimo da duração do processo (segundos):";
             this.labelTime.Click += new System.EventHandler(this.labelTime_Click);
             // 
             // pictureBox1
@@ -207,12 +218,35 @@
             // 
             this.dataSet1.DataSetName = "NewDataSet";
             // 
+            // button_Refresh
+            // 
+            this.button_Refresh.Enabled = false;
+            this.button_Refresh.Location = new System.Drawing.Point(330, 9);
+            this.button_Refresh.Name = "button_Refresh";
+            this.button_Refresh.Size = new System.Drawing.Size(59, 23);
+            this.button_Refresh.TabIndex = 17;
+            this.button_Refresh.Text = "Atualizar";
+            this.button_Refresh.UseVisualStyleBackColor = true;
+            this.button_Refresh.Click += new System.EventHandler(this.button_Refresh_Click);
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(1024, 14);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(59, 23);
+            this.buttonReset.TabIndex = 18;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1106, 434);
+            this.Controls.Add(this.buttonReset);
+            this.Controls.Add(this.button_Refresh);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelTime);
@@ -253,6 +287,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Request;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_TimeSpend;
+        private System.Windows.Forms.Button button_Refresh;
+        private System.Windows.Forms.Button buttonReset;
     }
 }
 
