@@ -37,7 +37,6 @@
             this.labelTime = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataSet1 = new System.Data.DataSet();
             this.Col_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Datetime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_ServerIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,7 @@
             this.Col_Request = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_TimeSpend = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataSet1 = new System.Data.DataSet();
             ((System.ComponentModel.ISupportInitialize)(this.timeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -114,7 +114,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(860, 391);
+            this.pictureBox1.Location = new System.Drawing.Point(953, 391);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(130, 31);
             this.pictureBox1.TabIndex = 11;
@@ -140,10 +140,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1068, 318);
             this.dataGridView1.TabIndex = 16;
-            // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "NewDataSet";
             // 
             // Col_ID
             // 
@@ -206,6 +202,10 @@
             this.Col_TimeSpend.Name = "Col_TimeSpend";
             this.Col_TimeSpend.ReadOnly = true;
             this.Col_TimeSpend.Width = 90;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "NewDataSet";
             // 
             // Form1
             // 
