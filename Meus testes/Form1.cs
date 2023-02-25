@@ -15,7 +15,7 @@ namespace Meus_testes
         string code;
         int id;
         DateTime logData;
-        List<string> aplications = new List<string>();
+        List<string> aplicationsList = new List<string>();
 
         public Form1()
         {
@@ -26,55 +26,81 @@ namespace Meus_testes
 
         private void ReadLog()
         {
-
-            
-
+          
             dataGridView1.Rows.Clear();
             id = 0;
 
             foreach (string line in File.ReadLines(filePath))
             {
-                string[] lineSplited = line.Split(' ');            
+                string[] lineSplited = line.Split(' ');
 
                 if (DateTime.TryParse(lineSplited[0], out logData))
                 {
-                    float timeTakenLineSplited = float.Parse(lineSplited[14], CultureInfo.InvariantCulture.NumberFormat);
+                    string aplicationSplited = lineSplited[4].Split('/')[1].ToUpper();
 
-                    timeTakenLineSplited /= 1000;
+                    if (comboBox1.SelectedItem == null || comboBox1.SelectedItem.ToString() == aplicationSplited)
 
-                    if ((float)timeBox.Value <= timeTakenLineSplited)
                     {
-                        aplications.Add(lineSplited[4].Split('/')[1]);
 
-                        id++;
+                        float timeTakenLineSplited = float.Parse(lineSplited[14], CultureInfo.InvariantCulture.NumberFormat);
 
-                        string datetime = lineSplited[0] + " - " + lineSplited[1];
+                        timeTakenLineSplited /= 1000;
 
-                        if (lineSplited[5].Contains("Cod="))
+                        if ((float)timeBox.Value <= timeTakenLineSplited)
                         {
-                            code = lineSplited[5];
+                            id++;
+
+                            bool flag = false;
+                            
+
+                            foreach (string _aplication in aplicationsList)
+                            {
+                                if (aplicationSplited == _aplication)
+                                {
+                                    flag = true;
+                                }
+                            }
+
+                            if (flag == false)
+                            {
+                                aplicationsList.Add(aplicationSplited);
+                            }
+
+                            string datetime = lineSplited[0] + " - " + lineSplited[1];
+
+                            if (lineSplited[5].Contains("Cod="))
+                            {
+                                code = lineSplited[5];
+                            }
+                            else code = "-";
+
+                            dataGridView1.Rows.Add(id, datetime, lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], code, timeTakenLineSplited);
+
+                            /*
+                            richTextBox1.Text += "#" + count + "\n";
+                            richTextBox1.Text += lineSplited[0] + " - " + lineSplited[1] + " (GWT)\n";
+                            richTextBox1.Text += "server ip: " + lineSplited[2] + "\n";
+                            richTextBox1.Text += "client ip: " + lineSplited[8] + "\n";
+                            richTextBox1.Text += "port: " + lineSplited[6] + "\n";
+                            richTextBox1.Text += lineSplited[3] + ": " + lineSplited[4] + "\n";
+                            richTextBox1.Text += "time taken: " + timeTakenLineSplited + " seconds \n\n";
+                            */
+
+
                         }
-                        else code = "-";
-
-                        dataGridView1.Rows.Add(id, datetime, lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], code, timeTakenLineSplited);
-
-                        /*
-                        richTextBox1.Text += "#" + count + "\n";
-                        richTextBox1.Text += lineSplited[0] + " - " + lineSplited[1] + " (GWT)\n";
-                        richTextBox1.Text += "server ip: " + lineSplited[2] + "\n";
-                        richTextBox1.Text += "client ip: " + lineSplited[8] + "\n";
-                        richTextBox1.Text += "port: " + lineSplited[6] + "\n";
-                        richTextBox1.Text += lineSplited[3] + ": " + lineSplited[4] + "\n";
-                        richTextBox1.Text += "time taken: " + timeTakenLineSplited + " seconds \n\n";
-                        */
-
-
                     }
+
                 }
             }
 
+            aplicationsList.Sort();
 
+            foreach (string _aplication in aplicationsList)
+            {
+                comboBox1.Items.Add(_aplication);
+            }
 
+            comboBox1.Enabled = true;
 
             if (id > 0)
             {
@@ -157,6 +183,14 @@ namespace Meus_testes
             labelFilePath.Text = "";         
             timeBox.Value = 0;
             id = 0;
+            comboBox1.Items.Clear();
+            comboBox1.Enabled = false;
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ReadLog();
         }
     }
 }
