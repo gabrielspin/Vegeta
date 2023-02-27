@@ -12,10 +12,11 @@ namespace Meus_testes
     public partial class Form1 : Form
     {
         // global variables
-        string filePath;        
+        string filePath;
         List<string> aplicationsList = new List<string>();
         bool loadAplicationComboBox = false;
-        
+        bool fileReady = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Meus_testes
             int id = 0;
 
             dataGridView1.Rows.Clear();
+            aplicationsList.Clear();
 
             foreach (string line in File.ReadLines(filePath))
             {
@@ -57,7 +59,7 @@ namespace Meus_testes
                                 }
                             }
 
-                            if (aplicationRepeated == false)
+                            if (aplicationRepeated == false && aplicationSplited != "")
                             {
                                 aplicationsList.Add(aplicationSplited);
                             }
@@ -82,8 +84,10 @@ namespace Meus_testes
 
             if (loadAplicationComboBox == true)
             {
+                fileReady = false;
                 aplicationsList.Sort();
-                comboBox1.Items.Clear();
+                //comboBox1.Text = "";
+                //comboBox1.Items.Clear();
                 comboBox1.Items.Add("");
 
                 foreach (string _aplication in aplicationsList)
@@ -92,7 +96,8 @@ namespace Meus_testes
                 }
 
                 comboBox1.Enabled = true;
-                comboBox1.Enabled = true;
+                buttonReset.Enabled = true;
+                fileReady = true;
                 loadAplicationComboBox = false;
             }
 
@@ -122,6 +127,9 @@ namespace Meus_testes
                     labelFilePath.Text = "carregando...";
                     filePath = openFileDialog.FileName;
                     loadAplicationComboBox = true;
+                    fileReady = false;
+                    comboBox1.Text = "";
+                    comboBox1.Items.Clear();                
 
                     if (timeBox.Value > 0)
                     {
@@ -137,7 +145,7 @@ namespace Meus_testes
                 }
             }
         }
-        
+
         private void button_Refresh_Click(object sender, EventArgs e)
         {
             ReadLog();
@@ -150,22 +158,25 @@ namespace Meus_testes
             comboBox1.Items.Clear();
 
             button_Refresh.Enabled = false;
-            
+
             dataGridView1.Rows.Clear();
-            
+
             labelCount.Visible = false;
             labelCount.Text = "";
-            labelFilePath.Text = "";         
-            
+            labelFilePath.Text = "";
+
             timeBox.Value = 0;
-            
+
             buttonReset.Enabled = false;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ReadLog();
-        }
+            if (fileReady == true)
+            {
+                ReadLog();
+            }
 
+        }
     }
 }
