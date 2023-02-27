@@ -11,37 +11,35 @@ namespace Meus_testes
 {
     public partial class Form1 : Form
     {
-        string filePath;
-        string code;
-        int id;
-        DateTime logData;
+        // global variables
+        string filePath;        
         List<string> aplicationsList = new List<string>();
-
+        bool loadAplicationComboBox = false;
+        
         public Form1()
         {
-
             InitializeComponent();
-
         }
 
         private void ReadLog()
         {
-          
+            int id = 0;
+
             dataGridView1.Rows.Clear();
-            id = 0;
 
             foreach (string line in File.ReadLines(filePath))
             {
                 string[] lineSplited = line.Split(' ');
+                DateTime logData;
 
                 if (DateTime.TryParse(lineSplited[0], out logData))
                 {
                     string aplicationSplited = lineSplited[4].Split('/')[1].ToUpper();
 
-                    if (comboBox1.SelectedItem == null || comboBox1.SelectedItem.ToString() == aplicationSplited)
-
+                    if (comboBox1.SelectedItem == null
+                    || comboBox1.SelectedItem.ToString() == ""
+                    || comboBox1.SelectedItem.ToString() == aplicationSplited)
                     {
-
                         float timeTakenLineSplited = float.Parse(lineSplited[14], CultureInfo.InvariantCulture.NumberFormat);
 
                         timeTakenLineSplited /= 1000;
@@ -49,70 +47,64 @@ namespace Meus_testes
                         if ((float)timeBox.Value <= timeTakenLineSplited)
                         {
                             id++;
-
-                            bool flag = false;
-                            
+                            bool aplicationRepeated = false;
 
                             foreach (string _aplication in aplicationsList)
                             {
                                 if (aplicationSplited == _aplication)
                                 {
-                                    flag = true;
+                                    aplicationRepeated = true;
                                 }
                             }
 
-                            if (flag == false)
+                            if (aplicationRepeated == false)
                             {
                                 aplicationsList.Add(aplicationSplited);
                             }
 
                             string datetime = lineSplited[0] + " - " + lineSplited[1];
+                            string code;
 
                             if (lineSplited[5].Contains("Cod="))
                             {
                                 code = lineSplited[5];
                             }
-                            else code = "-";
+                            else
+                            {
+                                code = "-";
+                            }
 
                             dataGridView1.Rows.Add(id, datetime, lineSplited[2], lineSplited[8], lineSplited[6], lineSplited[3], lineSplited[4], code, timeTakenLineSplited);
-
-                            /*
-                            richTextBox1.Text += "#" + count + "\n";
-                            richTextBox1.Text += lineSplited[0] + " - " + lineSplited[1] + " (GWT)\n";
-                            richTextBox1.Text += "server ip: " + lineSplited[2] + "\n";
-                            richTextBox1.Text += "client ip: " + lineSplited[8] + "\n";
-                            richTextBox1.Text += "port: " + lineSplited[6] + "\n";
-                            richTextBox1.Text += lineSplited[3] + ": " + lineSplited[4] + "\n";
-                            richTextBox1.Text += "time taken: " + timeTakenLineSplited + " seconds \n\n";
-                            */
-
-
                         }
                     }
-
                 }
             }
 
-            aplicationsList.Sort();
-
-            foreach (string _aplication in aplicationsList)
+            if (loadAplicationComboBox == true)
             {
-                comboBox1.Items.Add(_aplication);
-            }
+                aplicationsList.Sort();
+                comboBox1.Items.Clear();
+                comboBox1.Items.Add("");
 
-            comboBox1.Enabled = true;
+                foreach (string _aplication in aplicationsList)
+                {
+                    comboBox1.Items.Add(_aplication);
+                }
+
+                comboBox1.Enabled = true;
+                comboBox1.Enabled = true;
+                loadAplicationComboBox = false;
+            }
 
             if (id > 0)
             {
                 labelCount.Visible = true;
                 labelCount.Text = "Total: " + id.ToString() + " logs";
             }
-            else MessageBox.Show("Nenhum log encontrado!");
-            
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            else
+            {
+                MessageBox.Show("Nenhum log encontrado!");
+            }
         }
 
         private void buttonAbrirArquivo_Click(object sender, EventArgs e)
@@ -129,6 +121,7 @@ namespace Meus_testes
                     labelFilePath.Visible = true;
                     labelFilePath.Text = "carregando...";
                     filePath = openFileDialog.FileName;
+                    loadAplicationComboBox = true;
 
                     if (timeBox.Value > 0)
                     {
@@ -144,31 +137,7 @@ namespace Meus_testes
                 }
             }
         }
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-     
-        }
-
-        private void labelCount_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelTitleDoc_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timeBox_ValueChanged(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void labelTime_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button_Refresh_Click(object sender, EventArgs e)
         {
             ReadLog();
@@ -176,21 +145,27 @@ namespace Meus_testes
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
+            comboBox1.Enabled = false;
+            comboBox1.Text = "";
+            comboBox1.Items.Clear();
+
             button_Refresh.Enabled = false;
+            
             dataGridView1.Rows.Clear();
+            
             labelCount.Visible = false;
             labelCount.Text = "";
             labelFilePath.Text = "";         
+            
             timeBox.Value = 0;
-            id = 0;
-            comboBox1.Items.Clear();
-            comboBox1.Enabled = false;
-
+            
+            buttonReset.Enabled = false;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ReadLog();
         }
+
     }
 }

@@ -50,6 +50,7 @@
             this.button_Refresh = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.timeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -61,7 +62,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.InitialDirectory = "@C:\\";
             this.openFileDialog1.Title = "Abrir arquivo";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // buttonAbrirArquivo
             // 
@@ -82,18 +82,16 @@
             this.labelFilePath.TabIndex = 7;
             this.labelFilePath.Text = "labelFilePath";
             this.labelFilePath.Visible = false;
-            this.labelFilePath.Click += new System.EventHandler(this.labelTitleDoc_Click);
             // 
             // labelCount
             // 
             this.labelCount.AutoSize = true;
-            this.labelCount.Location = new System.Drawing.Point(12, 401);
+            this.labelCount.Location = new System.Drawing.Point(12, 618);
             this.labelCount.Name = "labelCount";
             this.labelCount.Size = new System.Drawing.Size(57, 13);
             this.labelCount.TabIndex = 9;
             this.labelCount.Text = "labelCount";
             this.labelCount.Visible = false;
-            this.labelCount.Click += new System.EventHandler(this.labelCount_Click);
             // 
             // timeBox
             // 
@@ -108,9 +106,8 @@
             0,
             0});
             this.timeBox.Name = "timeBox";
-            this.timeBox.Size = new System.Drawing.Size(43, 20);
+            this.timeBox.Size = new System.Drawing.Size(41, 20);
             this.timeBox.TabIndex = 0;
-            this.timeBox.ValueChanged += new System.EventHandler(this.timeBox_ValueChanged);
             // 
             // labelTime
             // 
@@ -120,7 +117,6 @@
             this.labelTime.Size = new System.Drawing.Size(253, 13);
             this.labelTime.TabIndex = 10;
             this.labelTime.Text = "Tempo mínimo da duração do processo (segundos):";
-            this.labelTime.Click += new System.EventHandler(this.labelTime_Click);
             // 
             // pictureBox1
             // 
@@ -150,7 +146,7 @@
             this.Col_TimeSpend});
             this.dataGridView1.Location = new System.Drawing.Point(15, 69);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1068, 318);
+            this.dataGridView1.Size = new System.Drawing.Size(1068, 538);
             this.dataGridView1.TabIndex = 16;
             // 
             // Col_ID
@@ -222,7 +218,7 @@
             // button_Refresh
             // 
             this.button_Refresh.Enabled = false;
-            this.button_Refresh.Location = new System.Drawing.Point(330, 9);
+            this.button_Refresh.Location = new System.Drawing.Point(330, 10);
             this.button_Refresh.Name = "button_Refresh";
             this.button_Refresh.Size = new System.Drawing.Size(59, 23);
             this.button_Refresh.TabIndex = 17;
@@ -232,7 +228,8 @@
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(1025, 396);
+            this.buttonReset.Enabled = false;
+            this.buttonReset.Location = new System.Drawing.Point(1025, 613);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(59, 23);
             this.buttonReset.TabIndex = 18;
@@ -244,18 +241,30 @@
             // 
             this.comboBox1.Enabled = false;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(483, 11);
+            this.comboBox1.Items.AddRange(new object[] {
+            ""});
+            this.comboBox1.Location = new System.Drawing.Point(597, 12);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(141, 21);
             this.comboBox1.TabIndex = 19;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(534, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Aplicação:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1096, 431);
+            this.ClientSize = new System.Drawing.Size(1094, 647);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.button_Refresh);
@@ -270,7 +279,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Vegeta";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.timeBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -302,6 +310,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_TimeSpend;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
